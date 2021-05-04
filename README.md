@@ -2,6 +2,8 @@
 How do filesystem snapshots work on Linux?
 To perform valid backups of your database, it is important to suspend the database. This prevents modifications of files during the backup process. By taking a point-in-time snapshot of your database files, your backup program will be capturing a “frozen” database instead of an “in motion” database.
 
+![immagine](https://user-images.githubusercontent.com/56889513/117018732-0ec9c000-acf5-11eb-9ee7-eafea0d7384e.png)
+
 Our standard backup script uses database suspension with snapshots to create point-in-time images of your database files. The snapshot script itself is located at /u2/UTILS/bin/snapsave_linux.sh (with a symbolic link at /bin/save for backwards compatibility).
 
 The snapshot script is typically scheduled to run at regular intervals via crontab to create new filesystem snapshots.  Here’s an example of a snapshot backup script that is scheduled via crontab to run every night at 12:59 AM:
